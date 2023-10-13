@@ -19,8 +19,12 @@ run = True
 finish = False
 font.init()
 font1 = font.Font(None, 60)
-loose = font1.render("Player 1 loose :<", True, (255, 200, 10))
-loose2 = font1.render("Player 2 loose :<", True, (255, 200, 10))
+t1 = font1.render("Ну, до завтра Сатания!", True, (255, 200, 10))
+t2 = font1.render("ы", True, (255, 200, 10))
+t3 = font1.render("б", True, (255, 200, 10))
+t4 = font1.render(".ь", True, (255, 200, 10))
+t5 = font1.render(".павп", True, (255, 200, 10))
+t6 = font1.render(".вапв", True, (255, 200, 10))
 
 
 
@@ -63,7 +67,7 @@ class Player(GameSprite):
 first = (255, 169, 146)
 second = (0, 0, 0)
 
-player = Player("emi.png", 0, 400, 7, 100, 130)
+player = Player("satania.png", 0, 400, 7, 115, 130)
 '''player2 = Player("klipartz.com.png", 680, 400, 2, 25, 150)
 ball = GameSprite("pngwing.com.png", 250, 400, 1, 80, 80)'''
 speed_x = 3
@@ -78,10 +82,38 @@ while run:
         '''ball.rect.x += speed_x
         ball.rect.y += speed_y'''
         window.blit(background,(0,0))
+        if e.type == MOUSEBUTTONDOWN:
+            window.blit(t1, (200,200))
+            display.update()
+            clock.tick(FPS)
+            if e.type == MOUSEBUTTONUP:
+                break
+            if e.type == MOUSEBUTTONDOWN:
+                window.blit(background,(0,0))
+                window.blit(t2, (200,200))
+                display.update()
+                clock.tick(FPS)
+                if e.type == MOUSEBUTTONDOWN:
+                    window.blit(t3, (200,200))
+                    display.update()
+                    clock.tick(FPS)
+                    if e.type == MOUSEBUTTONDOWN:
+                        window.blit(t4, (200,200))
+                        display.update()
+                        clock.tick(FPS)
+                        if e.type == MOUSEBUTTONDOWN:
+                            window.blit(t5, (200,200))
+                            display.update()
+                            clock.tick(FPS)
+                            if e.type == MOUSEBUTTONDOWN:
+                                window.blit(t6, (200,200))
+                                display.update()
+                                clock.tick(FPS)
+                                finish = True
         '''player2.update_l()
         player2.reset()'''
-        player.update()
-        player.reset()
+        '''player.update()
+        player.reset()'''
         '''ball.update()
         ball.reset()'''
     
