@@ -1,12 +1,26 @@
+from time import sleep
 from pygame import *
 from random import randint
 from time import time as timer
-win_width = 1930
-win_height = 1050
+from tkinter import *
+root = Tk()
+
+win_width = 1300
+win_height = 700
 window = display.set_mode((win_width, win_height))
 display.set_caption('My game')
 background = transform.scale(image.load('winx.jpg'), (win_width, win_height))
 
+root.title("Окно")
+root.geometry("300x250")
+#
+def btn_click(event):
+    button1.config(state='disabled')   # Изменить сосотояние
+    tex=Label(text="AAAAAA")
+    tex.pack()
+#
+#
+button1 = Button(text="Ок")
 
 
 '''mixer.init()
@@ -18,13 +32,13 @@ clock = time.Clock()
 run = True
 finish = False
 font.init()
-font1 = font.Font(None, 60)
+font1 = font.Font(None, 100)
 t1 = font1.render("Ну, до завтра Сатания!", True, (255, 200, 10))
-t2 = font1.render("ы", True, (255, 200, 10))
-t3 = font1.render("б", True, (255, 200, 10))
-t4 = font1.render(".ь", True, (255, 200, 10))
-t5 = font1.render(".павп", True, (255, 200, 10))
-t6 = font1.render(".вапв", True, (255, 200, 10))
+t2 = font1.render("ы", True, (0,0,0), (255,255,255))
+t3 = font1.render("б", True, (0,0,0), (255,255,255))
+t4 = font1.render(".ь", True,(0,0,0), (255,255,255))
+t5 = font1.render(".павп", True, (0,0,0), (255,255,255))
+t6 = font1.render(".вапв", True, (0,0,0), (255,255,255))
 
 
 
@@ -70,6 +84,7 @@ second = (0, 0, 0)
 player = Player("satania.png", 0, 400, 7, 115, 130)
 '''player2 = Player("klipartz.com.png", 680, 400, 2, 25, 150)
 ball = GameSprite("pngwing.com.png", 250, 400, 1, 80, 80)'''
+satania = GameSprite('pngwing.com.png', 200, 400, 2,200,400)
 speed_x = 3
 speed_y = 3
 
@@ -82,40 +97,47 @@ while run:
         '''ball.rect.x += speed_x
         ball.rect.y += speed_y'''
         window.blit(background,(0,0))
+        satania.reset()
+        satania.reset()
         if e.type == MOUSEBUTTONDOWN:
             window.blit(t1, (200,200))
             display.update()
             clock.tick(FPS)
-            if e.type == MOUSEBUTTONUP:
-                break
-            if e.type == MOUSEBUTTONDOWN:
+            sleep(3)
+            
+        
+            window.blit(background,(0,0))
+            window.blit(t2, (200,200))
+            display.update()
+            clock.tick(FPS)
+            sleep(3)
+        
+            window.blit(background,(0,0))
+            window.blit(t3, (200,200))
+            display.update()
+            clock.tick(FPS)
+            sleep(3)
+            '''if e.type == MOUSEBUTTONDOWN:
+                window.blit(t4, (200,200))
                 window.blit(background,(0,0))
-                window.blit(t2, (200,200))
                 display.update()
                 clock.tick(FPS)
-                if e.type == MOUSEBUTTONDOWN:
-                    window.blit(t3, (200,200))
-                    display.update()
-                    clock.tick(FPS)
-                    if e.type == MOUSEBUTTONDOWN:
-                        window.blit(t4, (200,200))
-                        display.update()
-                        clock.tick(FPS)
-                        if e.type == MOUSEBUTTONDOWN:
-                            window.blit(t5, (200,200))
-                            display.update()
-                            clock.tick(FPS)
-                            if e.type == MOUSEBUTTONDOWN:
-                                window.blit(t6, (200,200))
-                                display.update()
-                                clock.tick(FPS)
-                                finish = True
-        '''player2.update_l()
-        player2.reset()'''
-        '''player.update()
-        player.reset()'''
-        '''ball.update()
-        ball.reset()'''
+                sleep(5)
+            if e.type == MOUSEBUTTONDOWN:
+                window.blit(t5, (200,200))
+                window.blit(background,(0,0))
+                display.update()
+                clock.tick(FPS)
+                sleep(5)
+            if e.type == MOUSEBUTTONDOWN:
+                window.blit(t6, (200,200))
+                window.blit(background,(0,0))
+                display.update()
+                clock.tick(FPS)
+                sleep(5)'''
+            window.blit(background,(0,0))
+            player.update()
+            player.reset()
     
     '''if ball.rect.y > win_height - 50 or ball.rect.y < 0:
             speed_y *= -1
@@ -132,6 +154,6 @@ while run:
         finish = True
         window.blit(loose2, (200,200))'''
     
-    
+   
     display.update()
     clock.tick(FPS)
