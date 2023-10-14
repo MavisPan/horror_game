@@ -9,7 +9,7 @@ win_width = 1300
 win_height = 700
 window = display.set_mode((win_width, win_height))
 display.set_caption('My game')
-background = transform.scale(image.load('winx.jpg'), (win_width, win_height))
+background = transform.scale(image.load('school.jpg'), (win_width, win_height))
 
 '''root.title("Окно")
 root.geometry("300x250")
@@ -33,10 +33,11 @@ run = True
 finish = False
 font.init()
 font1 = font.Font(None, 100)
+t = font1.render("Для начала нажмите 1", True, (255, 200, 10))
 t1 = font1.render("Ну, до завтра Сатания!", True, (255, 200, 10))
-t2 = font1.render("Увидимся", True, (0,0,0), (255,255,255))
-t3 = font1.render("Наконец-то можно идти домой, но сначала...", True, (0,0,0), (255,255,255))
-t4 = font1.render("Меня ждёт булочка!", True,(0,0,0), (255,255,255))
+t2 = font1.render("Увидимся", True, (255, 200, 10))
+t3 = font1.render("Наконец-то можно идти домой, но сначала...", True, (255, 200, 10))
+t4 = font1.render("Меня ждёт булочка!", True,(255, 200, 10))
 t5 = font1.render("Стоп... А что это за книга? И где моя булочка?!", True, (0,0,0), (255,255,255))
 t6 = font1.render("Ч-ЧТО?!", True, (0,0,0), (255,255,255))
 t7 = font1.render("Уфф... БУЛОЧКИ! Надо идти за ними!", True, (0,0,0), (255,255,255))
@@ -94,6 +95,7 @@ class Wall(sprite.Sprite):
     def draw_wall(self):
         window.blit(self.image, (self.rect.x, self.rect.y))
 
+
 first = (255, 169, 146)
 second = (0, 0, 0)
 wall_1 = Wall(255, 255, 255, 200, 0, 30, 350)
@@ -103,75 +105,83 @@ wall_4 = Wall(255, 255, 255, 420, 180, 150, 10)
 player = Player("satania.png", 0, 400, 7, 115, 130)
 '''player2 = Player("klipartz.com.png", 680, 400, 2, 25, 150)
 ball = GameSprite("pngwing.com.png", 250, 400, 1, 80, 80)'''
-satania = GameSprite('pngwing.com.png', 200, 400, 2,200,400)
-satania2 = GameSprite('pngwing(2).com.png', 200, 400, 2,200,400)
-satania3 = GameSprite('pngwing(1).com.png', 200, 400, 2,200,400)
+satania = GameSprite('pngwing.com.png', 100, 400, 2,200,400)
+satania2 = GameSprite('pngwing.com (2).png', 200, 400, 2,200,400)
+satania3 = GameSprite('pngwing.com (1).png', 200, 400, 2,200,400)
 speed_x = 3
 speed_y = 3
-
+num = 1
+gameStage = 0
 while run:  
+    
     for e in event.get():
         if e.type == QUIT:
             run = False
-            
-    if finish != True:
+
+    if gameStage == 0:
         window.blit(background,(0,0))
+        window.blit(t, (200,600))
+        if e.type == KEYDOWN:
+            if e.key == K_1:
+                gameStage += 1
+
+    if gameStage == 1:
+        window.blit(background,(0,0))
+        
         satania.update()
         satania.reset()
+        window.blit(t1, (200,600))
+        if e.type == KEYDOWN:
+            if e.key == K_f:
+                gameStage += 1
+                sleep(1)
 
-        if e.type == MOUSEBUTTONDOWN:
-            window.blit(t1, (200,600))
-            display.update()
-            clock.tick(FPS)
-            sleep(3)
-            
-            window.blit(background,(0,0))
-            window.blit(t2, (200,600))
-            display.update()
-            clock.tick(FPS)
-            sleep(3)
-        
-            window.blit(background,(0,0))
-            window.blit(t3, (200,600))
-            display.update()
-            clock.tick(FPS)
-            sleep(3)
-
-            window.blit(background,(0,0))
-            window.blit(t4, (200,600))
-            display.update()
-            clock.tick(FPS)
-            sleep(3)
-
-            window.blit(background,(0,0))
-            window.blit(t5, (200,600))
-            display.update()
-            clock.tick(FPS)
-            sleep(3)
-
-            window.blit(background,(0,0))
-            window.blit(t6, (200,600))
-            display.update()
-            clock.tick(FPS)
-            sleep(3)
-
-            window.blit(background,(0,0))
-            window.blit(t7, (200,600))
-            display.update()
-            clock.tick(FPS)
-            sleep(3)
-
+    elif gameStage == 2:
         window.blit(background,(0,0))
-        player.update()
-        player.reset()
-        wall_1.draw_wall()
-        wall_2.draw_wall()
-        wall_3.draw_wall()
-        wall_4.draw_wall()
+        
+        satania.update()
+        satania.reset()
+        window.blit(t2, (200,600))
+        if e.type == KEYDOWN:
+            if e.key == K_f:
+                gameStage += 1
+                sleep(1)
+                        
+    elif gameStage == 3:
+        window.blit(background,(0,0))
+        
+        satania.update()
+        satania.reset()
+        window.blit(t3, (200,600))
+        if e.type == KEYDOWN:
+            if e.key == K_f:
+                gameStage += 1
+                sleep(1)
+    
+    elif gameStage == 4:
+        window.blit(background,(0,0))
+        
+        satania.update()
+        satania.reset()
+        window.blit(t4, (200,600))
+        if e.type == KEYDOWN:
+            if e.key == K_f:
+                gameStage += 1
+                sleep(1)
 
-        if sprite.collide_rect(player, wall_1) or sprite.collide_rect(player, wall_2) or sprite.collide_rect(player, wall_3) or sprite.collide_rect(player, wall_4):
-            finish = True
-            window.blit(loose2, (200,200))
+    elif gameStage == 5:
+        window.blit(background,(0,0))
+        window.blit(t5, (200,600))
+        player1.update()
+        player1.reset()
+        if e.type == KEYDOWN:
+            if e.key == K_f:
+                gameStage += 1  
+                sleep(1)              
+
+    if sprite.collide_rect(player, wall_1) or sprite.collide_rect(player, wall_2) or sprite.collide_rect(player, wall_3) or sprite.collide_rect(player, wall_4):
+        finish = True
+        window.blit(loose2, (200,200))
     
     '''if ball.rect.y > win_height - 50 or ball.rect.y < 0:
             speed_y *= -1
