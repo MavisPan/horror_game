@@ -32,10 +32,11 @@ t4 = font1.render("Меня ждёт булочка!", True,(255, 200, 10))
 t5 = font1.render("Стоп... А что это за книга?", True, (255,255,255))
 t51 = font1.render("И где моя булочка?!", True, (255,255,255))
 t6 = font1.render("Ч-ЧТО?!", True, (255,255,255))
-t7 = font1.render("Уфф... БУЛОЧКИ! Надо идти за ними!", True, (255,255,255))
-t8 = font1.render("Ну, наконец-то...", True, (255,255,255))
-t9 = font1.render("Минутку...", True, (255,255,255))
-t10 = font1.render("О НЕТ, СОБАКИ!", True, (255,255,255))
+t7 = font1.render("Уфф... БУЛОЧКИ!", True, (255,255,255))
+t8 = font1.render("Надо идти за ними!", True, (255,255,255))
+t9 = font1.render("Ну, наконец-то...", True, (255,255,255))
+t10 = font1.render("Минутку...", True, (255,255,255))
+t1 = font1.render("О НЕТ, СОБАКИ!", True, (255,255,255))
 
 
 
@@ -112,10 +113,10 @@ wall_3 = Wall(148, 255, 248, 840, 70, 30, 500)
 wall_4 = Wall(148, 255, 248, 840, 180, 150, 10)
 
 player = Player("satania.png", 0, 400, 7, 115, 130)
-satania = GameSprite('pngwing.com (1).png', 100, 350, 2, 250,400)
-satania2 = GameSprite('pngwing.com (2).png', 60, 360, 2, 250,350)
-satania3 = GameSprite('pngwing.com (3).png', 60, 400, 2,300,550)
-satania4 = GameSprite('sat.png', 80, 380, 2,200,400)
+satania = GameSprite('pngwing.com (1).png', 60, 350, 2, 250,400)
+satania2 = GameSprite('pngwing.com (2).png', 40, 360, 2, 250,350)
+satania3 = GameSprite('pngwing.com (3).png', 40, 400, 2,300,550)
+satania4 = GameSprite('sat.png', 50, 380, 2,200,400)
 toradora = GameSprite('tora.png', 100, 200, 2,500,600)
 bun = GameSprite('bun.png', 1000, 300, 2, 100, 100)
 exit1 = Enemy("exit.png",  0, 350, 2, 90, 65)
@@ -147,6 +148,7 @@ while run:
                 if e.key == K_f:
                     gameStage += 1
                     sleep(1)
+                    
         if gameStage == 2:
             
             background = transform.scale(image.load('back.jpg'), (win_width, win_height))
@@ -239,7 +241,7 @@ while run:
         
         elif gameStage == 10:
             window.blit(background,(0,0))
-            window.blit(t7, (100,600))
+            window.blit(t7, (300,600))
             satania3.update()
             satania3.reset()
             if e.type == KEYDOWN:
@@ -247,7 +249,17 @@ while run:
                     gameStage += 1  
                     sleep(1)   
 
-        if gameStage == 11:
+        elif gameStage == 11:
+            window.blit(background,(0,0))
+            window.blit(t8, (300,600))
+            satania3.update()
+            satania3.reset()
+            if e.type == KEYDOWN:
+                if e.key == K_f:
+                    gameStage += 1  
+                    sleep(1)   
+
+        if gameStage == 12:
             window.blit(background,(0,0))
             player.update()
             player.reset()
@@ -267,7 +279,7 @@ while run:
                 window.blit(loose, (550,500))
                 finish = True
             
-        '''if gameStage == 11:
+        '''if gameStage == 13:
             window.blit(background,(0,0))
             window.blit(t8, (100,600))
             satania2.update()
@@ -277,7 +289,7 @@ while run:
                     gameStage += 1  
                     sleep(1)   
 
-        if gameStage == 12:
+        if gameStage == 14:
             window.blit(background,(0,0))
             window.blit(t9, (100,600))
             satania4.update()
@@ -287,7 +299,7 @@ while run:
                     gameStage += 1  
                     sleep(1)   
 
-        if gameStage == 13:
+        if gameStage == 15:
             window.blit(background,(0,0))
             window.blit(t10, (100,600))
             satania4.update()
