@@ -27,16 +27,14 @@ t = font2.render("Переключение диалога: f", True, (100,100,10
 t1 = font1.render("Ну, до завтра Сатания!", True, (255, 200, 10))
 t2 = font1.render("Увидимся", True, (255, 200, 10))
 t3 = font1.render("Наконец-то можно идти домой", True, (255, 200, 10))
-t31 = font1.render("Yо сначала...", True, (255, 200, 10))
+t31 = font1.render("Но сначала...", True, (255, 200, 10))
 t4 = font1.render("Меня ждёт булочка!", True,(255, 200, 10))
 t5 = font1.render("Стоп... А что это за книга?", True, (255,255,255))
 t51 = font1.render("И где моя булочка?!", True, (255,255,255))
 t6 = font1.render("Ч-ЧТО?!", True, (255,255,255))
 t7 = font1.render("Уфф... БУЛОЧКИ!", True, (255,255,255))
 t8 = font1.render("Надо идти за ними!", True, (255,255,255))
-t9 = font1.render("Ну, наконец-то...", True, (255,255,255))
-t10 = font1.render("Минутку...", True, (255,255,255))
-t1 = font1.render("О НЕТ, СОБАКИ!", True, (255,255,255))
+
 
 
 
@@ -90,6 +88,7 @@ class Wall(sprite.Sprite):
         self.rect.y = wall_y
     def draw_wall(self):
         window.blit(self.image, (self.rect.x, self.rect.y))
+        
 lost = 0
 class Enemy(GameSprite):
     def update(self):
@@ -126,8 +125,7 @@ num = 1
 gameStage = 0
 loose = font1.render('WASTED', True, (255,0,0))
 win = font1.render('To be continued...', True, (221, 127, 255))
-monster = Enemy("bun.png", 0, randint(80, 620), 2, 90, 65)
-'''monsters.add(monster)'''   
+ 
 while run:    
     for e in event.get():
         if e.type == QUIT:
@@ -278,69 +276,6 @@ while run:
                 window.blit(background,(0,0))
                 window.blit(loose, (550,500))
                 finish = True
-            
-        '''if gameStage == 13:
-            window.blit(background,(0,0))
-            window.blit(t8, (100,600))
-            satania2.update()
-            satania2.reset()
-            if e.type == KEYDOWN:
-                if e.key == K_f:
-                    gameStage += 1  
-                    sleep(1)   
-
-        if gameStage == 14:
-            window.blit(background,(0,0))
-            window.blit(t9, (100,600))
-            satania4.update()
-            satania4.reset()
-            if e.type == KEYDOWN:
-                if e.key == K_f:
-                    gameStage += 1  
-                    sleep(1)   
-
-        if gameStage == 15:
-            window.blit(background,(0,0))
-            window.blit(t10, (100,600))
-            satania4.update()
-            satania4.reset()
-            if e.type == KEYDOWN:
-                if e.key == K_f:
-                    gameStage += 1  
-                    sleep(1)   
-
-        if gameStage == 10:
-            window.blit(background,(0,0))
-            player.update()
-            player.reset()
-            if e.type == KEYDOWN:
-                if e.key == K_SPACE:                   
-                    player.fire()
-            if score >= 3:
-                exit1.update()
-                exit1.reset()
-            if sprite.collide_rect(player, exit1):
-                window.blit(win, (200,200))     
-                finish = True  
-            if sprite.collide_rect(player, wall_5) or sprite.collide_rect(player, wall_6) or sprite.collide_rect(player, wall_7) or sprite.collide_rect(player, wall_8):
-                background = transform.scale(image.load('dog.gif'), (win_width, win_height))
-                window.blit(background,(0,0))
-                window.blit(loose, (550,500))
-                finish = True'''
-    '''if ball.rect.y > win_height - 50 or ball.rect.y < 0:
-            speed_y *= -1
-
-    if sprite.collide_rect(player, ball) or sprite.collide_rect(player2, ball):
-        speed_x *= -1
-
-
-    if ball.rect.x < 0:
-        finish = True
-        window.blit(loose, (200,200))
-    
-    if ball.rect.x > 630:
-        finish = True
-        window.blit(loose2, (200,200))'''
     
    
     display.update()
