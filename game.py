@@ -119,7 +119,7 @@ satania3 = GameSprite('pngwing.com (3).png', 40, 400, 2,300,550)
 satania4 = GameSprite('sat.png', 50, 380, 2,200,400)
 toradora = GameSprite('tora.png', 100, 200, 2,500,600)
 bun = GameSprite('bun.png', 1000, 300, 2, 100, 100)
-exit1 = Enemy("exit.png",  0, 350, 2, 90, 65)
+
 speed_x = 3
 speed_y = 3
 num = 1
